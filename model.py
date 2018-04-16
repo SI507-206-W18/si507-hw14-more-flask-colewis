@@ -5,7 +5,7 @@ from datetime import datetime
 GUESTBOOK_ENTRIES_FILE = "entries.json"
 entries = []
 
-def init(app):
+def init():
     global entries
     try:
 
@@ -33,3 +33,6 @@ def add_entry(name, text):
         f.close()
     except:
         print("ERROR! Could not write entries to file.")
+
+def delete_entry():
+    pass
