@@ -8,12 +8,12 @@
     <div class="entry">
         <p class="entrytext"> {{e['text']}} </p>
         <p class="metadata"> by {{e['author']}} on {{e['timestamp']}} </p>
+        <p class="metadata"> id: {{e['id']}} </p>
+        <form action"/delete" method="POST">
+          <input type="submit" value="X">
+          <input type="hidden" name="id" value="{{e['id']}}">
+        </form>
     </div>
-    <form action"/delete" method="POST">
-      <input type="submit" name="icon" value="X">
-      <input type="hidden" name="theid" value="{{e['id']}}">
-      <input type="submit" value="Delete">
-    </form>
-
-
 {% endfor %}
+
+<br/><p><a href="/">Go Home</a></p>
