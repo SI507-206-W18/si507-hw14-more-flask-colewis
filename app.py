@@ -26,7 +26,7 @@ def postentry():
     model.add_entry(name, message)
     return redirect("/")
 
-@app.route("/delete", methods=["DELETE"])
+@app.route("/delete", methods=["POST"])
 def delete_entry():
     model.delete_entry(request.form['id'])
     return redirect('/admin')

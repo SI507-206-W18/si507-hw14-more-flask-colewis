@@ -38,6 +38,4 @@ def add_entry(name, text):
 def delete_entry(next_id):
     global entries, GUESTBOOK_ENTRIES_FILE
     for item in entries:
-        if item['id'] == next_id:
-            x=item['id']
-    entries.remove(x)
+        entries.remove(item)
