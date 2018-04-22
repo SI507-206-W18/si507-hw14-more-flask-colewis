@@ -7,14 +7,11 @@ entries = []
 next_id = 0
 
 def init():
-    global entries #, next_id
+    global entries
     try:
         f = open(GUESTBOOK_ENTRIES_FILE)
         entries = json.loads(f.read())
         f.close()
-        # for item in entries:
-        #     if item['id'] > next_id:
-        #         next_id = item['id'] + 1
     except:
         print('Couldn\'t open', GUESTBOOK_ENTRIES_FILE)
         entries = []
@@ -29,7 +26,7 @@ def add_entry(name, text):
     time_string = now.strftime("%b %d, %Y %-I:%M %p")
     entry = {"author": name, "text": text, "timestamp": time_string, "id": next_id} #item not defined
     next_id += 1
-    entries.insert(0, entry) ## add to front of list
+    entries.insert(next_id, entry) ## add to front of list
     try:
         f = open(GUESTBOOK_ENTRIES_FILE, "w")
         dump_string = json.dumps(entries)
@@ -38,18 +35,9 @@ def add_entry(name, text):
     except:
         print("ERROR! Could not write entries to file.")
 
-def delete_entry(post_id):
-    global entries #, GUESTBOOK_ENTRIES_FILE
-    target = None
+def delete_entry(next_id):
+    global entries, GUESTBOOK_ENTRIES_FILE
     for item in entries:
-        if item['id'] == post_id:
-            target = item
-    entries.remove(target)
-            #entries.remove(item)
-    # try:
-    #     f = open(GUESTBOOK_ENTRIES_FILE, "w")
-    #     dump_string = json.dumps(entries)
-    #     f.write(dump_string)
-    #     f.close()
-    # except:
-    #     print("ERROR! Could not write entries to file.")
+        if item['id'] == next_id:
+            x=item['id']
+    entries.remove(x)
